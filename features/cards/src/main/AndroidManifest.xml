@@ -2,7 +2,7 @@
     package="pokemontcg.features.cards" >
 
     <application>
-        <activity android:name=".ui.CardMainActivity" android:theme="@style/PokemonTCGAppTheme"/>
+        <activity android:name=".ui.main.CardMainActivity" android:theme="@style/PokemonTCGAppTheme"/>
     </application>
 
 </manifest>
