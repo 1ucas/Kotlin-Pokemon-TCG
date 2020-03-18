@@ -19,7 +19,7 @@ if (project.hasProperty('android')) {
             }
         }
 
-
+        resourcePrefix "$project.name"
     }
 
     dependencies {
