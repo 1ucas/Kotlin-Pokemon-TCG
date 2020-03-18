@@ -5,4 +5,10 @@ dependencies {
     def deps = rootProject.ext.dependencies
 
     implementation deps.appCompat
+
+    // api -> Além de implementar, expões para outros módulos
+    implementation deps.appCompat
+
+    api deps.constraintLayout
+    api deps.material
 }
