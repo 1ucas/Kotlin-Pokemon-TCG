@@ -24,6 +24,7 @@ ext {
         kotlinExtensions      : "androidx.core:core-ktx:$versions.kotlinExtensions",
 
         koin                 : "org.koin:koin-android:${versions.koin}",
+        koinViewModel        : "org.koin:koin-android-viewmodel:${versions.koin}",
 
         lifecycleKtx          : "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}",
         viewModelKtx          : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",

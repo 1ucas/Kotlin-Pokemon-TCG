@@ -6,6 +6,7 @@ object CardsModule {
 
     fun getModules() : Array<Module> = arrayOf(
         dataModule,
-        useCaseModule
+        useCaseModule,
+        uiModule
     )
 }

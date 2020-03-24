@@ -4,10 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.cards_activity_main.*
-import kotlinx.coroutines.launch
+import org.koin.android.viewmodel.ext.android.viewModel
 import pokemontcg.features.cards.R
 import pokemontcg.libraries.ui_components.extensions.createLoadingDialog
 
@@ -15,9 +13,7 @@ class CardMainActivity : AppCompatActivity() {
 
     private val cardsAdapter = CardsAdapter()
 
-    private val viewModel: CardMainViewModel by lazy {
-        ViewModelProvider(this).get(CardMainViewModel::class.java)
-    }
+    private val viewModel: CardMainViewModel by viewModel()
 
     private val loadingAlert:AlertDialog by lazy {
         createLoadingDialog()
