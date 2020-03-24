@@ -3,6 +3,7 @@ package pokemontcg.features.cards.ui.main
 import CardsApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import org.koin.java.KoinJavaComponent.inject
 import pokemontcg.features.cards.data.network.CardsNetworkRepository
 import pokemontcg.features.cards.model.Card
 import pokemontcg.features.cards.usecase.ListCardsUseCase
@@ -14,11 +15,10 @@ internal class CardMainViewModel : BaseViewModel() {
     private val _cardLiveData = MutableLiveData<List<Card>>()
     var cards: LiveData<List<Card>> = _cardLiveData
 
+    private val useCase : ListCardsUseCase by inject(clazz = ListCardsUseCase::class.java)
+
     init {
         doAsyncWork {
-            val api = ApiClientBuilder.createServiceApi(CardsApi::class.java)
-            val repo = CardsNetworkRepository(api)
-            val useCase = ListCardsUseCase(repo)
             _cardLiveData.value = useCase.execute(null)
         }
     }

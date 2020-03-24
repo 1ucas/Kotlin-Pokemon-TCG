@@ -15,6 +15,8 @@ dependencies {
     implementation project(":features:cards")
     implementation project(":libraries:ui_components")
 
+    implementation deps.koin
+
     implementation deps.appCompat
 
     implementation testDeps.jUnit

@@ -13,6 +13,8 @@ dependencies {
     implementation deps.appCompat
     implementation deps.glide
 
+    implementation deps.koin
+
     implementation deps.lifecycleKtx
 
     implementation testDeps.jUnit

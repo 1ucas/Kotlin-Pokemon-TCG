@@ -3,6 +3,8 @@ ext {
         constraintLayout      : "1.1.3",
         kotlinExtensions      : '1.2.0',
 
+        koin                  : "2.1.5",
+
         lifecycle             : '2.2.0',
 
         appCompat             : '1.1.0',
@@ -20,6 +22,8 @@ ext {
     dependencies = [
         kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
         kotlinExtensions      : "androidx.core:core-ktx:$versions.kotlinExtensions",
+
+        koin                 : "org.koin:koin-android:${versions.koin}",
 
         lifecycleKtx          : "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}",
         viewModelKtx          : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
