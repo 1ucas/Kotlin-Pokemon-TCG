@@ -8,6 +8,7 @@ dependencies {
 //    implementation fileTree(dir: 'libs', include: ['*.jar']) -> Ignorado porque não estamos usando
     implementation project(":libraries:ui_components")
     implementation project(":libraries:network")
+    implementation project(":libraries:common")
 
     implementation deps.appCompat
     implementation deps.glide
