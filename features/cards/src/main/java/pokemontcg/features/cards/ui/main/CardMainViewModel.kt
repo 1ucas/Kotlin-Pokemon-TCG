@@ -17,7 +17,9 @@ internal class CardMainViewModel : BaseViewModel() {
     init {
         doAsyncWork {
             val api = ApiClientBuilder.createServiceApi(CardsApi::class.java)
-            _cardLiveData.value = ListCardsUseCase(CardsNetworkRepository(api)).execute(null)
+            val repo = CardsNetworkRepository(api)
+            val useCase = ListCardsUseCase(repo)
+            _cardLiveData.value = useCase.execute(null)
         }
     }
 
