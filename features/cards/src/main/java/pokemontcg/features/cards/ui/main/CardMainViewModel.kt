@@ -1,10 +1,12 @@
 package pokemontcg.features.cards.ui.main
 
+import CardsApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import pokemontcg.features.cards.data.network.CardsNetworkRepository
 import pokemontcg.features.cards.model.Card
 import pokemontcg.features.cards.usecase.ListCardsUseCase
+import pokemontcg.libraries.network.ApiClientBuilder
 import pokemontcg.libraries.ui_components.BaseViewModel
 
 internal class CardMainViewModel : BaseViewModel() {
@@ -14,7 +16,8 @@ internal class CardMainViewModel : BaseViewModel() {
 
     init {
         doAsyncWork {
-            _cardLiveData.value = ListCardsUseCase(CardsNetworkRepository()).execute(null)
+            val api = ApiClientBuilder.createServiceApi(CardsApi::class.java)
+            _cardLiveData.value = ListCardsUseCase(CardsNetworkRepository(api)).execute(null)
         }
     }
 
