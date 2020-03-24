@@ -14,7 +14,6 @@ dependencies {
     implementation deps.glide
 
     implementation deps.lifecycleKtx
-    implementation deps.viewModelKtx
 
     implementation testDeps.jUnit
 }

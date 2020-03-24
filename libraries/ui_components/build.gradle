@@ -9,6 +9,7 @@ dependencies {
     // api -> Além de implementar, expões para outros módulos
     implementation deps.appCompat
 
+    api deps.viewModelKtx
     api deps.constraintLayout
     api deps.material
 }
