@@ -1,5 +1,5 @@
 package pokemontcg.libraries.common
 
 interface UseCase<Param, Return> {
-    fun execute(param:Param) : Return
+    suspend fun execute(param:Param) : Return
 }

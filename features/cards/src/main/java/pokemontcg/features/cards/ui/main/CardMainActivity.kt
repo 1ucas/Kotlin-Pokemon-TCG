@@ -1,17 +1,12 @@
 package pokemontcg.features.cards.ui.main
 
-import CardsApi
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.cards_activity_main.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import pokemontcg.features.cards.R
-import pokemontcg.features.cards.model.Card
-import pokemontcg.libraries.network.ApiClientBuilder
-import pokemontcg.libraries.network.RequestManager
+import pokemontcg.features.cards.usecase.ListCardsUseCase
 
 class CardMainActivity : AppCompatActivity() {
 
@@ -30,22 +25,12 @@ class CardMainActivity : AppCompatActivity() {
     }
 
     private fun listCards() {
-        val api = ApiClientBuilder.createServiceApi(CardsApi::class.java)
+        val useCase = ListCardsUseCase()
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            val apiResponse = RequestManager.requestFromApi { api.listCards() }
+        lifecycleScope.launch {
+            val cards = useCase.execute(null)
 
-            val cards = apiResponse?.cards?.map {
-                Card(
-                    id = it.id,
-                    name = it.name,
-                    imageURL = it.imageUrl
-                )
-            }
-
-            withContext(Dispatchers.Main) {
-                cardsAdapter.submitList(cards)
-            }
+            cardsAdapter.submitList(cards)
         }
     }
 
