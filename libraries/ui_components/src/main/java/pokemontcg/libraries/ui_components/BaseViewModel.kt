@@ -12,7 +12,7 @@ open abstract class BaseViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _showError = MutableLiveData<String>()
+    private val _showError = SingleLiveEvent<String>()
     val showError: LiveData<String> =_showError
 
     fun doAsyncWork(work: suspend () -> Unit) {
@@ -21,7 +21,7 @@ open abstract class BaseViewModel : ViewModel() {
                 _isLoading.value = true
                 work()
             } catch (e: Exception) {
-                _showError.value = e.message
+                _showError.call(e.message)
             }
             _isLoading.value = false
         }
