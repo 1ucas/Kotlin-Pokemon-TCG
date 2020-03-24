@@ -7,7 +7,7 @@ import pokemontcg.libraries.common.UseCase
 import pokemontcg.libraries.network.ApiClientBuilder
 import pokemontcg.libraries.network.RequestManager.requestFromApi
 
-internal class ListCardsUseCase() : UseCase<Unit, List<Card>> {
+internal class ListCardsUseCase() : UseCase<Unit?, List<Card>> {
 
     override suspend fun execute(param: Unit?): List<Card> {
         return withContext(Dispatchers.IO) {
