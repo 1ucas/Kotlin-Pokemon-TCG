@@ -2,6 +2,7 @@ package pokemontcg.features.cards.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import pokemontcg.features.cards.data.network.CardsNetworkRepository
 import pokemontcg.features.cards.model.Card
 import pokemontcg.features.cards.usecase.ListCardsUseCase
 import pokemontcg.libraries.ui_components.BaseViewModel
@@ -13,7 +14,7 @@ internal class CardMainViewModel : BaseViewModel() {
 
     init {
         doAsyncWork {
-            _cardLiveData.value = ListCardsUseCase().execute(null)
+            _cardLiveData.value = ListCardsUseCase(CardsNetworkRepository()).execute(null)
         }
     }
 
