@@ -12,7 +12,10 @@ internal class CardMainViewModel(private val useCase: ListCardsUseCase) : BaseVi
     private val _cardLiveData = MutableLiveData<List<Card>>()
     var cards: LiveData<List<Card>> = _cardLiveData
 
+    var isInitialized = false
+
     init {
+        isInitialized = true
         doAsyncWork {
             _cardLiveData.value = useCase.execute(null)
         }

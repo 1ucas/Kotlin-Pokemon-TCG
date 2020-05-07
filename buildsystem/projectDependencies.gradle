@@ -16,15 +16,17 @@ ext {
         retrofit              : '2.7.2',
         gson                  : '2.8.6',
 
-        jUnit                 : '4.12'
+        jUnit                 : '4.12',
+        archCore              : '2.1.0',
+        mockk                 : '1.9',
     ]
 
     dependencies = [
         kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
         kotlinExtensions      : "androidx.core:core-ktx:$versions.kotlinExtensions",
 
-        koin                 : "org.koin:koin-android:${versions.koin}",
-        koinViewModel        : "org.koin:koin-android-viewmodel:${versions.koin}",
+        koin                  : "org.koin:koin-android:${versions.koin}",
+        koinViewModel         : "org.koin:koin-android-viewmodel:${versions.koin}",
 
         lifecycleKtx          : "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}",
         viewModelKtx          : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
@@ -41,6 +43,9 @@ ext {
     ]
 
     testDependencies = [
-        jUnit             : "junit:junit:$versions.jUnit"
+        jUnit                 : "junit:junit:$versions.jUnit",
+        androidCoreTesting    : "androidx.arch.core:core-testing:${versions.archCore}",
+        koinTest              : "org.koin:koin-test:${versions.koin}",
+        mockk                 : "io.mockk:mockk:${versions.mockk}",
     ]
 }
