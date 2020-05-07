@@ -14,6 +14,7 @@ dependencies {
 //    implementation fileTree(dir: 'libs', include: ['*.jar']) -> Ignorado porque não estamos usando
     implementation project(":features:cards")
     implementation project(":libraries:ui_components")
+    implementation project(":libraries:common")
 
     implementation deps.koin
 

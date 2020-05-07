@@ -19,6 +19,7 @@ ext {
         jUnit                 : '4.12',
         archCore              : '2.1.0',
         mockk                 : '1.9',
+        mockWebServer         : '4.4.0',
     ]
 
     dependencies = [
@@ -47,5 +48,6 @@ ext {
         androidCoreTesting    : "androidx.arch.core:core-testing:${versions.archCore}",
         koinTest              : "org.koin:koin-test:${versions.koin}",
         mockk                 : "io.mockk:mockk:${versions.mockk}",
+        mockWebServer         : "com.squareup.okhttp3:mockwebserver:${versions.mockWebServer}",
     ]
 }
