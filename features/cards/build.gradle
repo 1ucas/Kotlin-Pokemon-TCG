@@ -18,10 +18,7 @@ dependencies {
 
     implementation deps.lifecycleKtx
 
-    testImplementation testDeps.jUnit
-    testImplementation testDeps.mockk
-    testImplementation testDeps.mockWebServer
-    testImplementation testDeps.jUnit
+    testImplementation project(":libraries:testutils")
     testImplementation testDeps.koinTest
-    testImplementation testDeps.androidCoreTesting
 }
+

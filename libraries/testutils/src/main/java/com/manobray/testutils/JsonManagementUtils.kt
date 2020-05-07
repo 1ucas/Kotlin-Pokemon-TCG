@@ -1,4 +1,4 @@
-package pokemontcg.features.cards
+package com.manobray.testutils
 
 import java.io.File
 

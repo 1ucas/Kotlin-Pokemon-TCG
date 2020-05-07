@@ -2,6 +2,8 @@ package pokemontcg.features.cards.data
 
 import CardsApi
 import android.util.Log
+import com.manobray.testutils.enqueueResponse
+import com.manobray.testutils.loadJsonFromResources
 import io.mockk.every
 import io.mockk.mockkStatic
 import kotlinx.coroutines.runBlocking
@@ -13,7 +15,6 @@ import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
 import pokemontcg.features.cards.data.network.CardsNetworkRepository
-import pokemontcg.features.cards.loadJsonFromResources
 import pokemontcg.libraries.common.mapTo
 import pokemontcg.libraries.network.ApiClientBuilder
 import pokemontcg.libraries.network.exceptions.GeneralNetworkException
@@ -42,13 +43,6 @@ class CardNetworkRepositoryTest {
         // não é necessário em um cenário real. Porque não deveria ter referência do Android em biblioca de network
         mockkStatic(Log::class)
         every { Log.d(any(), any()) } returns 0
-    }
-
-    fun MockWebServer.enqueueResponse(responseCode: Int, body: String) {
-        val response = MockResponse()
-            .setResponseCode(responseCode)
-            .setBody(body)
-        this.enqueue(response)
     }
 
     @Test

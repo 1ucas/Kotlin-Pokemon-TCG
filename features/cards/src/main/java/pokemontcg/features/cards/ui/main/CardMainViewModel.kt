@@ -14,11 +14,15 @@ internal class CardMainViewModel(private val useCase: ListCardsUseCase) : BaseVi
 
     var isInitialized = false
 
-    init {
-        isInitialized = true
+    fun init() {
         doAsyncWork {
             _cardLiveData.value = useCase.execute(null)
+            marcarIniciado()
         }
+    }
+
+    fun marcarIniciado() {
+        isInitialized = true
     }
 
 }
