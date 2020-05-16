@@ -8,6 +8,7 @@ open abstract class BaseViewModel : ViewModel() {
 
     val showError = SingleLiveEvent<String>()
     val state = SingleLiveEvent<State>()
+    val isLoading = SingleLiveEvent<Boolean>()
 
     enum class State {
         Default,
@@ -18,11 +19,13 @@ open abstract class BaseViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 state.call(State.Loading)
+                isLoading.call(true)
                 work()
             } catch (e: Exception) {
                 showError.call(e.message)
             }
             state.call(State.Default)
+            isLoading.call(false)
         }
     }
 

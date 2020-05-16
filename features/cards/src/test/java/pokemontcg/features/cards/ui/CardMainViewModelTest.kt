@@ -3,13 +3,12 @@ package pokemontcg.features.cards.ui
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.manobray.testutils.CoroutineTestRule
-import io.mockk.MockKAnnotations
-import io.mockk.coEvery
+import io.mockk.*
 import io.mockk.impl.annotations.MockK
-import io.mockk.spyk
-import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -39,6 +38,8 @@ class CardMainViewModelTest {
 
     private lateinit var stateObserver: Observer<State>
 
+    private lateinit var loadingObserver: Observer<Boolean>
+
     private lateinit var errorObserver: Observer<String>
 
     @Before
@@ -48,9 +49,11 @@ class CardMainViewModelTest {
         viewModel = CardMainViewModel(useCase)
 
         stateObserver = spyk(Observer { })
+        loadingObserver = spyk(Observer {  })
         errorObserver = spyk(Observer { })
 
         viewModel.state.observeForever(stateObserver)
+        viewModel.isLoading.observeForever(loadingObserver)
         viewModel.showError.observeForever(errorObserver)
 
         Dispatchers.setMain(Dispatchers.Unconfined)
@@ -62,7 +65,7 @@ class CardMainViewModelTest {
     }
 
     @Test
-    fun `inicializa viewModel com sucesso`() {
+    fun `inicializa viewModel com sucesso`()  {
         // Given
         val slots = mutableListOf<State>()
         val listaCartas = listOf(Card("150", "Mewtwo", "mewtwourl"))
@@ -75,8 +78,13 @@ class CardMainViewModelTest {
         verify(exactly = 0) { errorObserver.onChanged(any()) }
         verify(exactly = 2) { stateObserver.onChanged(capture(slots)) }
 
-        assertEquals(State.Loading, slots[0])
-        assertEquals(State.Default, slots[1])
+        verifyOrder {
+            viewModel.state.call(State.Loading)
+            viewModel.isLoading.call(true)
+            viewModel.state.call(State.Default)
+            viewModel.isLoading.call(false)
+        }
+
         assertEquals(listaCartas, viewModel.cards.value)
         assertEquals(true, viewModel.isInitialized)
     }
@@ -94,8 +102,11 @@ class CardMainViewModelTest {
         verify { errorObserver.onChanged(any()) }
         verify(exactly = 2) { stateObserver.onChanged(capture(slots)) }
 
-        assertEquals(State.Loading, slots[0])
-        assertEquals(State.Default, slots[1])
+        verifyOrder {
+            viewModel.state.call(State.Loading)
+            viewModel.state.call(State.Default)
+        }
+
         assertEquals(null, viewModel.cards.value)
         assertEquals(false, viewModel.isInitialized)
     }
