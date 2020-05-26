@@ -1,6 +1,15 @@
 apply plugin: 'com.android.library'
 apply from: rootProject.file('buildsystem/androidProjectConfig.gradle')
 
+android {
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+    }
+}
+
 dependencies {
     def deps = rootProject.ext.dependencies
     def testDeps = rootProject.ext.testDependencies

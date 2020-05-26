@@ -16,6 +16,7 @@ if (project.hasProperty('android')) {
             release {
             }
             debug{
+                testCoverageEnabled false
             }
         }
 

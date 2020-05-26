@@ -4,7 +4,7 @@ import org.koin.core.module.Module
 
 object CardsModule {
 
-    fun getModules() : Array<Module> = arrayOf(
+    fun getModules() : List<Module> = listOf(
         dataModule,
         useCaseModule,
         uiModule
