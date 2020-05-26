@@ -5,8 +5,6 @@ import pokemontcg.features.cards.di.CardsModule
 
 object AppModule {
 
-    fun getModules() : List<Module> = listOf(
-        *CardsModule.getModules()
-    )
+    fun getModules() : List<Module> = CardsModule.getModules()
 
 }

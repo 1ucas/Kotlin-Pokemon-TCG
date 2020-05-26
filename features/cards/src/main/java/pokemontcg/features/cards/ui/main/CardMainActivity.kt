@@ -27,6 +27,7 @@ class CardMainActivity : AppCompatActivity() {
 
         setupView()
         setupObservers()
+        viewModel.init()
     }
 
     private fun setupView() {
