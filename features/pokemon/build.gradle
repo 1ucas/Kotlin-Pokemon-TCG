@@ -1,11 +1,12 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply from: rootProject.file('buildsystem/androidProjectConfig.gradle')
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
-    defaultConfig {
-        applicationId "com.manobray.pokemontcg"
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
     }
 }
 
@@ -13,18 +14,20 @@ dependencies {
     def deps = rootProject.ext.dependencies
     def testDeps = rootProject.ext.testDependencies
 
-//    implementation fileTree(dir: 'libs', include: ['*.jar']) -> Ignorado porque não estamos usando
-    implementation project(":features:cards")
-    implementation project(":features:pokemon")
     implementation project(":libraries:ui_components")
+    implementation project(":libraries:network")
     implementation project(":libraries:common")
 
-    implementation deps.koin
-
     implementation deps.appCompat
+    implementation deps.glide
+
+    implementation deps.koin
+    implementation deps.koinViewModel
+
+    implementation deps.lifecycleKtx
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    testImplementation testDeps.jUnit
+    testImplementation project(":libraries:testutils")
     testImplementation testDeps.koinTest
 }
