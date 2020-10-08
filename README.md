@@ -1,5 +1,7 @@
 # Buscador de Cartas de Pokemon
 
+[![Build Status](https://app.bitrise.io/app/6af20d613b256a46/status.svg?token=k8HVpWL5aQTU_9TrTgxb4Q&branch=master)](https://app.bitrise.io/app/6af20d613b256a46)
+
 Este é um aplicativo nativo Android estilo showcase para testes / aplicações de funcionalidades.
 
 Deve ser utilizado como consulta de implementações e referência de evolução das plataformas, framework e bibliotecas.
