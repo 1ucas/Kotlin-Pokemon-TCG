@@ -18,7 +18,7 @@ ext {
         jUnit                 : '4.12',
         archCore              : '2.1.0',
         mockk                 : '1.10.2',
-        mockWebServer         : '4.4.0',
+        mockWebServer         : '4.9.0',
         coroutinesTest        : '1.3.5',
 
         navigation            : '2.3.0'
