@@ -49,11 +49,24 @@ internal class PokemonGenerationsFragment : Fragment() {
             }
         })
 
+        viewModel.showError.observe(this, Observer {
+            showMessage(it)
+        })
+
         viewModel.fetchGenerations()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+    }
+
+    private fun showMessage(message: String) {
+        val alert = createDialog(message)
+        alert?.show()
+    }
+
+    private fun createDialog(message: String): AlertDialog? {
+        return this.activity?.let { return AlertDialog.Builder(it, R.style.AlertDialog).setMessage(message).create() }
     }
 
 }
