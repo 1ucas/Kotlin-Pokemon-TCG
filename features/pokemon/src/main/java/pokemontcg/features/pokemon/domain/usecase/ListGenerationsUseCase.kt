@@ -9,11 +9,9 @@ internal class ListGenerationsUseCase(private val repo: PokemonRepository) : Use
 
     override suspend fun execute(param: Unit): List<Generation> {
         val generationEntries = repo.listGenerations()
-        val generationsResponse = mutableListOf<GenerationDTO>()
-        for (generation in generationEntries) {
-            val detailResponse = repo.getGenerationDetails(generation.name)
-            generationsResponse.add(detailResponse)
+        val generationsResponse = generationEntries.map {
+            repo.getGenerationDetails(it.name)
         }
-        return generationsResponse.map { dto -> Generation(name = dto.name, versions = dto.versionGroups.map { version -> version.name }) }
+        return generationsResponse.map { it.mapTo() }
     }
 }
