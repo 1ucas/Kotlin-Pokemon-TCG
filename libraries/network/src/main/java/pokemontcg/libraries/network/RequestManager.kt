@@ -8,7 +8,7 @@ object RequestManager {
     suspend fun <T> requestFromApi(
         request:(suspend () -> Response<T>)
     ): T? {
-        return try {
+        try {
             val response = request()
             if(response.isSuccessful) {
                 return response.body() // -> Já realiza o Parse da resposta
@@ -25,6 +25,5 @@ object RequestManager {
             // Log
             throw e
         }
-        return null
     }
 }

@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply from: rootProject.file('buildsystem/androidProjectConfig.gradle')
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
 
@@ -21,13 +23,18 @@ dependencies {
     implementation deps.appCompat
     implementation deps.glide
 
+    implementation deps.constraintLayout
+
     implementation deps.koin
     implementation deps.koinViewModel
 
+    implementation deps.viewModelKtx
     implementation deps.lifecycleKtx
+    implementation deps.lifecycleExt
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation deps.navigationFragment
+    implementation deps.navigationComponent
+
     testImplementation project(":libraries:testutils")
     testImplementation testDeps.koinTest
 }
