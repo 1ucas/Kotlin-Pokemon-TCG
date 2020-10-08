@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-open abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel() {
 
     val showError = SingleLiveEvent<String>()
     val state = SingleLiveEvent<State>()
