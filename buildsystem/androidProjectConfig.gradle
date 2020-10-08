@@ -27,6 +27,10 @@ if (project.hasProperty('android')) {
             targetCompatibility JavaVersion.VERSION_1_8
         }
 
+        lintOptions {
+            warning 'InvalidPackage'
+        }
+
 //        resourcePrefix "$project.name"
     }
 
