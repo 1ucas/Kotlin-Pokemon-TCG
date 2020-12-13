@@ -12,13 +12,13 @@ ext {
 
         glide                 : "4.11.0",
 
-        retrofit              : '2.7.2',
+        retrofit              : '2.9.0',
         gson                  : '2.8.6',
 
         jUnit                 : '4.12',
         archCore              : '2.1.0',
         mockk                 : '1.10.2',
-        mockWebServer         : '4.9.0',
+        mockWebServer         : '3.14.0',
         coroutinesTest        : '1.3.5',
 
         navigation            : '2.3.0'
