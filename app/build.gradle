@@ -4,16 +4,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file("local.properties").newDataInputStream())
-
     defaultConfig {
         applicationId "com.manobray.pokemontcg"
     }
     signingConfigs {
         release {
-            // You need to specify either an absolute path or include the
-            // keystore file in the same directory as the build.gradle file.
+            Properties properties = new Properties()
+            properties.load(project.rootProject.file("local.properties").newDataInputStream())
+            
             storeFile file(properties.getProperty("kotlintcg.keystore.file", ""))
             storePassword properties.getProperty("kotlintcg.keystore.password", "")
             keyAlias properties.getProperty("kotlintcg.key.alias", "")
