@@ -40,6 +40,7 @@ Um aplicativo que faz a busca de uma lista de cartas de Pokemon
 ## Work in Progress (WIP):
 
 - [ ] Pipeline - Em construção
+- [ ] Pipeline Jenkins - Em construção
 
 ## Trabalho Futuro (Roadmap):
 
